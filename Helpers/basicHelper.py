@@ -13,9 +13,10 @@ class Basic_Helper:
         logging.info(f"Open url {url}")
 
     def locelement(self, loc, sec=10):
-        elem = WebDriverWait(self.driver, sec).until(EC.presence_of_element_located(loc))
-        logging.info("Element located")
+        elem = WebDriverWait(self.driver, sec).until(EC.element_to_be_clickable(loc))
+        logging.info("Given brand located")
         return elem
+        
     
     def getElementValue(self, loc, sec=10):
         elem = WebDriverWait(self.driver, sec).until(EC.presence_of_element_located(loc))
