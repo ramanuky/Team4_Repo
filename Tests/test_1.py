@@ -14,7 +14,7 @@ def test(driver):
     sr.findBrandandClick(testdata.brand_text)
     time.sleep(0.5)
     sr.findPriceandClick(testdata.price_text)
-    sr.getAndCheckResult()
+    json = sr.getAndCheckResult()
     
 
   

@@ -3,7 +3,8 @@ from selenium.webdriver.common.by import By
 import logging
 import time
 import requests
-from lxml import html
+from bs4 import BeautifulSoup
+import json
 
 class SearchResult(Basic_Helper):
 
@@ -31,18 +32,42 @@ class SearchResult(Basic_Helper):
 
     def getAndCheckResult(self):
         #products = self.find_elements(self.products_loc)
+
         # URL of the webpage you want to scrape
         url = self.currentUrl()
-        print("url: ", url)
-        # Fetch the webpage content
-        response = requests.get(url)
+        print(url)
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 
-        # Parse the HTML content using lxml
-        tree = html.fromstring(response.content)
+        # Fetch the webpage content with headers
+        response = requests.get(url, headers=headers)
 
-        # Extract the JSON content using XPath
+        # Check if the request was successful
+        response.raise_for_status()  # This will raise an HTTPError if the HTTP request returned an unsuccessful status code
 
-        json_content = tree.xpath(self.products_loc)[0]
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, 'html.parser')
 
-        # Print the JSON content
-        print("json: ", str(json_content))
+        # Find the div with id 'products'
+        products_div = soup.find('div', id='products')
+
+        # Check if the div was found and contains the script tag
+        if products_div:
+            script_tag = products_div.find('script', type='application/ld+json')
+            if script_tag:
+                # Extract and print the JSON content
+                json_content = script_tag.string
+                print(type(json_content))
+                time.sleep(1)
+                data = json.loads(json_content)
+                print(type(data))
+                product = {}
+                product['brand_name'] = data['brand']['name']
+                product['price'] = float((data['offers']['price'])[1:])
+                print(product)
+
+            else:
+                print("Script tag with type 'application/ld+json' not found within the 'products' div.")
+        else:
+            print("Div with id 'products' not found.")
+        
+        return product
