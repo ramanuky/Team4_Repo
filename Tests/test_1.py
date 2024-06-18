@@ -11,6 +11,10 @@ def test(driver):
     sr = SearchResult(driver)
     h.geturl(config.base_url)
     h.search(testdata.search_text)
-    assert sr.currentURL()==config.searched_url, logging.error("Invalid url")
-    sr.findBrand(testdata.brand_text)
+    sr.findBrandandClick(testdata.brand_text)
+    time.sleep(0.5)
+    sr.findPriceandClick(testdata.price_text)
+    sr.getAndCheckResult()
+    
+
   

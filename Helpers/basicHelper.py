@@ -29,13 +29,25 @@ class Basic_Helper:
         elem.click()
         logging.info("Element clicked")
 
-    def findandinput(self, loc, inputtext, sec=10):
+    def find_input_search(self, loc, inputtext, sec=10):
         input_field = WebDriverWait(self.driver, sec).until(EC.presence_of_element_located(loc))
         input_field.clear()
         input_field.send_keys(inputtext)
         input_field.send_keys(Keys.ENTER)
         logging.info("Input field located and text was filled")
     
-    def currentURL(self):
-        cur_url = self.currentURL()
-        return cur_url
+    
+    def find_element(self, loc, sec=10):
+        
+        elem = WebDriverWait(self.driver, sec).until(EC.presence_of_element_located(loc))
+        logging.info("Element located")
+        return elem
+    
+    def find_elements(self, loc, sec=10):
+        elements = WebDriverWait(self.driver, sec).until(
+            EC.visibility_of_all_elements_located(loc))
+        logging.info("Elements located")
+        return elements
+    
+    def currentUrl(self):
+        return self.driver.current_url

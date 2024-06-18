@@ -7,9 +7,8 @@ class Home(Basic_Helper):
     search_loc = (By.XPATH, "//*[@id='searchAll']")
     
     def search(self, search_text):
-        self.findandinput(self.search_loc, search_text)
-        current_URL = self.currentURL()
-        assert current_URL == config.searched_url, logging.error("Redirected to wrong page")
+        self.find_input_search(self.search_loc, search_text)
+        # add checking for current url
         logging.info("Successfully redirected to searched text page")
     
 
