@@ -3,6 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
+
 class Basic_Helper:
     def __init__(self, driver):
         self.driver = driver
@@ -13,41 +14,43 @@ class Basic_Helper:
         logging.info(f"Open url {url}")
 
     def locelement(self, loc, sec=10):
-        elem = WebDriverWait(self.driver, sec).until(EC.element_to_be_clickable(loc))
+        elem = WebDriverWait(self.driver, sec).until(
+            EC.element_to_be_clickable(loc))
         logging.info("Given brand located")
         return elem
-        
-    
+
     def getElementValue(self, loc, sec=10):
-        elem = WebDriverWait(self.driver, sec).until(EC.presence_of_element_located(loc))
+        elem = WebDriverWait(self.driver, sec).until(
+            EC.presence_of_element_located(loc))
         value = elem.get_attribute('value')
         logging.info("Element value get")
         return value
-    
+
     def findandclick(self, loc, sec=10):
-        elem = WebDriverWait(self.driver, sec).until(EC.element_to_be_clickable(loc))
+        elem = WebDriverWait(self.driver, sec).until(
+            EC.element_to_be_clickable(loc))
         elem.click()
         logging.info("Element clicked")
 
     def find_input_search(self, loc, inputtext, sec=10):
-        input_field = WebDriverWait(self.driver, sec).until(EC.presence_of_element_located(loc))
+        input_field = WebDriverWait(self.driver, sec).until(
+            EC.presence_of_element_located(loc))
         input_field.clear()
         input_field.send_keys(inputtext)
         input_field.send_keys(Keys.ENTER)
         logging.info("Input field located and text was filled")
-    
-    
+
     def find_element(self, loc, sec=10):
-        
-        elem = WebDriverWait(self.driver, sec).until(EC.presence_of_element_located(loc))
+        elem = WebDriverWait(self.driver, sec).until(
+            EC.presence_of_element_located(loc))
         logging.info("Element located")
         return elem
-    
+
     def find_elements(self, loc, sec=10):
         elements = WebDriverWait(self.driver, sec).until(
-            EC.visibility_of_all_elements_located(loc))
+            EC.presence_of_all_elements_located(loc))
         logging.info("Elements located")
         return elements
-    
+
     def currentUrl(self):
         return self.driver.current_url
