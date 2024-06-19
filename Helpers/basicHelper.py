@@ -2,6 +2,7 @@ import logging
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import StaleElementReferenceException
 
 
 class Basic_Helper:
@@ -47,10 +48,16 @@ class Basic_Helper:
         return elem
 
     def find_elements(self, loc, sec=10):
-        elements = WebDriverWait(self.driver, sec).until(
-            EC.presence_of_all_elements_located(loc))
-        logging.info("Elements located")
-        return elements
+        try:
+            elements = WebDriverWait(self.driver, sec).until(
+                EC.presence_of_all_elements_located(loc))
+            logging.info("Elements located")
+            return elements
+        except StaleElementReferenceException:
+            elements = WebDriverWait(self.driver, sec).until(
+                EC.presence_of_all_elements_located(loc))
+            logging.info("Elements located after retry")
+            return elements
 
     def currentUrl(self):
         return self.driver.current_url

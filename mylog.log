@@ -1,10 +1,4 @@
-2024-06-19 16:30:52 [INFO] basicHelper.py:14 - geturl - Open url https://www.6pm.com/
-2024-06-19 16:30:56 [INFO] basicHelper.py:41 - find_input_search - Input field located and text was filled
-2024-06-19 16:30:56 [INFO] home.py:12 - search - Search text entered.
-2024-06-19 16:30:56 [INFO] home.py:17 - search - Successfully redirected to search results page.                     Current URL: https://www.6pm.com/classic-sunglasses
-2024-06-19 16:30:56 [INFO] basicHelper.py:52 - find_elements - Elements located
-2024-06-19 16:30:57 [INFO] searchResult.py:27 - findBrandandClick - Brand 'Lacoste (1)' was found and clicked
-2024-06-19 16:30:58 [INFO] basicHelper.py:52 - find_elements - Elements located
-2024-06-19 16:30:58 [INFO] searchResult.py:36 - findPriceandClick - Price '$200.00 and Under (1)' was found and clicked
-2024-06-19 16:31:00 [INFO] searchResult.py:76 - getAndCheckResult - Product data extracted: {'brand_name': 'Lacoste', 'price': 135.3}
-2024-06-19 16:31:03 [INFO] searchResult.py:76 - getAndCheckResult - Product data extracted: {'brand_name': 'Lacoste', 'price': 135.3}
+2024-06-19 19:40:16 [INFO] basicHelper.py:15 - geturl - Open url https://www.6pm.com/
+2024-06-19 19:40:20 [INFO] basicHelper.py:42 - find_input_search - Input field located and text was filled
+2024-06-19 19:40:20 [INFO] home.py:12 - search - Search text entered.
+2024-06-19 19:40:20 [INFO] home.py:17 - search - Successfully redirected to search results page.                     Current URL: https://www.6pm.com/classic-sunglasses
