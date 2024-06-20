@@ -1,0 +1,7 @@
+2024-06-19 21:30:42 [INFO] basicHelper.py:15 - geturl - Open url https://www.6pm.com/
+2024-06-19 21:30:47 [INFO] basicHelper.py:42 - find_input_search - Input field located and text was filled
+2024-06-19 21:30:47 [INFO] home.py:12 - search - Search text entered.
+2024-06-19 21:30:47 [INFO] home.py:17 - search - Successfully redirected to search results page.                     Current URL: https://www.6pm.com/classic-sunglasses
+2024-06-19 21:30:47 [INFO] basicHelper.py:54 - find_elements - Elements located
+2024-06-19 21:30:47 [INFO] searchResult.py:27 - findBrandandClick - Brand 'Lacoste (1)' was found and clicked
+2024-06-19 21:30:48 [INFO] basicHelper.py:54 - find_elements - Elements located
