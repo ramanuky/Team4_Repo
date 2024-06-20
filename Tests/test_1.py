@@ -34,3 +34,9 @@ def test_search_functionality(driver):
             f"Expected '{testdata.brand_text}' to be in '{product['brand_name']}"
         assert product['price'] <= float(testdata.price_text), \
             "Price does not match"
+
+# Notes - Very interesting approache , I especially like the allure reporting features
+# One note according to use beutiful soup and requests library in the test is not a good practice
+# because you don't interact with the browser and you don't test the UI, you test the data that is returned from the server
+# But it could be good practise if you need to parse the data from the server and do some data manipulation
+# Other parts of the test are well written and easy to understand - Good Job  :)
