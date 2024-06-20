@@ -26,9 +26,6 @@ def test_search_functionality(driver):
     with allure.step("Select price range"):
         search_result_page.findPriceandClick(testdata.price_text)
 
-    with allure.step("Check search result"):
-        json = search_result_page.getAndCheckResult()
-        print("json from test_1:", json)
 
     with allure.step("Verify product details"):
         product = search_result_page.getAndCheckResult()

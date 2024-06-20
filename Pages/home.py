@@ -5,7 +5,7 @@ import config
 
 
 class Home(Basic_Helper):
-    search_loc = (By.XPATH, "//*[@id='searchAll']")
+    search_loc = (By.XPATH, "//input[@id='searchAll']")
 
     def search(self, search_text):
         self.find_input_search(self.search_loc, search_text)
